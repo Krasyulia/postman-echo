@@ -10,12 +10,13 @@ class PostmanEchoTest {
     void shouldReturnSomething() {
         given()
             .baseUri("https://postman-echo.com")
-                .body("{ \"message\" : \"data\"}") // отправляемые данные (заголовки и query можно выставлять аналогично)
+                .contentType("text/plain; charset=UTF-8")
+                .body("testdata") // отправляемые данные (заголовки и query можно выставлять аналогично)
             .when()
                 .post("/post")
             .then()
                 .statusCode(200)
-                .body("message", equalTo("data"))
+                .body("data", equalTo("testdata"))
         ;
     }
 }
